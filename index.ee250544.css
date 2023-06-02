@@ -1,0 +1,2 @@
+.loader{width:200px;height:200px;background:linear-gradient(45deg,#f0f,#0ff);margin:auto;animation:rotate 5s linear infinite;position:relative}.loader:before,.loader:after{content:"";width:0;border-left:100px solid rgba(0,0,0,0);border-right:100px solid rgba(0,0,0,0);position:absolute}.loader:before{border-bottom:173px solid #f0f;bottom:100%}.loader:after{width:0;border-top:173px solid #0ff;top:100%}@keyframes rotate{0%{transform:rotate(0deg)}to{transform:rotate(360deg)}}.is-hidden{display:none}
+/*# sourceMappingURL=index.ee250544.css.map */
