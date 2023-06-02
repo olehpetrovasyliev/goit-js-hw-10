@@ -1,0 +1,41 @@
+.loader {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  background: linear-gradient(45deg, #ff00ff, #00ffff);
+  animation: rotate 5s linear infinite;
+  margin: auto;
+}
+
+.loader::before,
+.loader::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  border-left: 100px solid transparent;
+  border-right: 100px solid transparent;
+}
+
+.loader::before {
+  bottom: 100%;
+  border-bottom: 173px solid #ff00ff;
+}
+
+.loader::after {
+  top: 100%;
+  width: 0;
+  border-top: 173px solid #00ffff;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.is-hidden {
+  display: none;
+}
