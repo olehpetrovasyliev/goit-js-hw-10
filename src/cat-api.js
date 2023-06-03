@@ -1,29 +1,32 @@
-// https://api.thecatapi.com/v1/images/search
+// // // https://api.thecatapi.com/v1/images/search
 const BASE_URL = 'https://api.thecatapi.com';
 const API_KEY =
-  'api_key=live_Fx8aWtobi7nw45bvdMbnYxmBD1D3nvFGVPaXAj6F3RhDDbZnW7ML1sHaD6SV2LQQ';
+  'live_Fx8aWtobi7nw45bvdMbnYxmBD1D3nvFGVPaXAj6F3RhDDbZnW7ML1sHaD6SV2LQQ';
 
 // }
 export function fetchBreeds() {
-  return fetch(`${BASE_URL}/v1/breeds?${API_KEY}`)
+  return fetch(`${BASE_URL}/v1/breeds?api_key=${API_KEY}`)
     .then(response => {
       if (!response.ok) {
         throw new Error(response.status);
       }
       return response.json();
     })
-    .catch(error => {
-      console.log(error);
+    .catch(err => {
+      {
+        Notiflix.Notify.failure(err);
+        refs.err.classList.toggle('is-hidden');
+      }
     });
 }
 
-// export function fetchCatByBreed(breedId) {
-//   return fetch(`${BASE_URL}/images/search?breed_ids=${breedId}`).then(
-//     response => {
-//       if (!response.ok) {
-//         throw new Error(response.status);
-//       }
-//       return response.json();
-//     }
-//   );
-// }
+export const fetchCatByBreed = breedId => {
+  return fetch(
+    `${BASE_URL}/v1/images/search?breed_ids=${breedId}&api_key=${API_KEY}`
+  ).then(response => {
+    if (!response.ok) {
+      throw new Error(response.status);
+    }
+    return response.json();
+  });
+};
