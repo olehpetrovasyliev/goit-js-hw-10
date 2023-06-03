@@ -14,21 +14,17 @@ fetchBreeds()
       .join('');
     refs.select.innerHTML = catListName;
     setTimeout(() => {
-      fetchCatByBreed(refs.select.value)
-        .then(response => {
-          let cat = response[0].breeds[0];
-          console.log(response[0].breeds[0]);
-          refs.catWrapper.innerHTML = `
+      fetchCatByBreed(refs.select.value).then(response => {
+        let cat = response[0].breeds[0];
+        console.log(response[0].breeds[0]);
+        refs.catWrapper.innerHTML = `
                 <img width=500 src="${response[0].url}" alt="${cat.name} loading ="lazy">
                 <h2>${cat.name}</h2>
                 <p class="cat-description">${cat.description}</p>
                 <p class="cat-description">Temperament: ${cat.temperament}</p>
         `;
-          refs.loader.classList.add('is-hidden');
-        })
-        .catch(err => {
-          Notiflix.Notify.failure(err);
-        });
+        refs.loader.classList.add('is-hidden');
+      });
     }, 500);
   })
   .catch(err => {
