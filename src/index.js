@@ -29,19 +29,22 @@ fetchBreeds()
   })
   .catch(err => {
     Notiflix.Notify.failure(err);
+    refs.err.classList.remove('is-hidden');
   });
 
 const onSelect = evt => {
   refs.loader.classList.remove('is-hidden');
   refs.catWrapper.innerHTML = '';
-
+  if (refs.err.classList.contains('is-hidden')) {
+    refs.err.classList.add('is-hidden');
+  }
   setTimeout(() => {
     fetchCatByBreed(refs.select.value)
       .then(response => {
         let cat = response[0].breeds[0];
         console.log(response[0].breeds[0]);
         refs.catWrapper.innerHTML = `
-                <img width=500 src="${response[0].url}" alt="${cat.name} loading ="lazy">
+                <img width = 500px src="${response[0].url}" alt="${cat.name} loading ="lazy">
                 <h2>${cat.name}</h2>
                 <p class="cat-description">${cat.description}</p>
                 <p class="cat-description">Temperament: ${cat.temperament}</p>
@@ -50,6 +53,7 @@ const onSelect = evt => {
       })
       .catch(err => {
         Notiflix.Notify.failure(err);
+        refs.err.classList.remove('is-hidden');
       });
   }, 500);
 };
